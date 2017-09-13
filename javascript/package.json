@@ -1,0 +1,21 @@
+{
+  "name": "js-coding-challenge-starter",
+  "version": "1.0.0",
+  "description": "Starter kit for JavaScript coding challenges",
+  "main": "codingChallenge.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamchrissmith/code_challenge_template.git"
+  },
+  "author": "Chris Smith",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+  }
+}
