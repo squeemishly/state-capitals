@@ -32,4 +32,7 @@ class StateCapitalsTest < Minitest::Test
     assert_equal "Salem", sc.find_capital("OR")
   end
 
+  def test_it_can_find_a_capital_for_a_state
+    assert_equal "Salem", sc.find_capital("Oregon")
+  end
 end
