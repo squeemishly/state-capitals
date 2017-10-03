@@ -17,4 +17,8 @@ describe('StateCapitals()', () => {
   it('can return the capital from a state name', () => {
     assert.equal('Salem', sc.state_to_capital('Oregon'))
   })
+
+  it('returns Unknown if the capital cannot be found', () => {
+    assert.equal('Unknown', sc.state_to_capital("Boudi"))
+  })
 })
