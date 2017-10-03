@@ -1,9 +1,9 @@
-class Object {
+class StateCapitals {
   constructor() {
 
   }
 
-  
+
 }
 
-module.exports = Object;
+module.exports = StateCapitals;

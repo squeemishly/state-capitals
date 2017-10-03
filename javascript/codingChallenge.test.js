@@ -1,12 +1,12 @@
 const assert = require('chai').assert
-const Object = require('./codingChallenge')
+const StateCapitals = require('./codingChallenge')
 
-describe('Object()', () => {
+describe('StateCapitals()', () => {
   before( () => {
-    object = new Object
+    sc = new StateCapitals
   })
 
-  it('', () => {
-
+  it('exists', () => {
+    assert(sc)
   })
 })
