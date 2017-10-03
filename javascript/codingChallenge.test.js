@@ -9,4 +9,8 @@ describe('StateCapitals()', () => {
   it('exists', () => {
     assert(sc)
   })
+
+  it('can find the state abbreviation from a state name', () => {
+    assert.equal("OR", sc.state_to_abbreviation("Oregon"))
+  })
 })
