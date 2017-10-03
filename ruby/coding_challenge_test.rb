@@ -25,4 +25,8 @@ class StateCapitalsTest < Minitest::Test
   def test_it_can_find_a_capital_for_a_state
     assert_equal "Salem", sc.find_capital_from_state("Oregon")
   end
+
+  def test_it_returns_unknown_for_a_state_not_in_the_list
+    assert_equal "Unknown", sc.find_capital_from_state("Boudi")
+  end
 end

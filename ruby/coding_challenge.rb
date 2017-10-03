@@ -24,6 +24,10 @@ class StateCapitals
   end
 
   def find_capital_from_state(state)
-    capitals[find_abbreviation(state)]
+    if capitals[find_abbreviation(state)]
+      capitals[find_abbreviation(state)]
+    else
+      "Unknown"
+    end
   end
 end
