@@ -30,4 +30,8 @@ class StateCapitals
       "Unknown"
     end
   end
+
+  def capital_to_abbreviation(city)
+    capitals.key(city)
+  end
 end
