@@ -22,4 +22,8 @@ class StateCapitals
   def find_capital(abbrev)
     capitals[abbrev]
   end
+
+  def find_capital_from_state(state)
+    capitals[find_abbreviation(state)]
+  end
 end
