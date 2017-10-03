@@ -4,20 +4,10 @@ require 'minitest/autorun'
 require_relative './coding_challenge'
 
 class StateCapitalsTest < Minitest::Test
-  attr_reader :sc,
-              :states,
-              :capitals
+  attr_reader :sc
 
   def setup
     @sc = StateCapitals.new
-    @states = {"Oregon" => "OR",
-              "Alabama" => "AL",
-              "New Jersey" => "NJ",
-              "Colorado" => "CO"}
-    @capitals = {"OR" => "Salem",
-                "AL" => "Montgomery",
-                "NJ" => "Trenton",
-                "CO" => "Denver"}
   end
 
   def test_it_exists
@@ -32,7 +22,7 @@ class StateCapitalsTest < Minitest::Test
     assert_equal "Salem", sc.find_capital("OR")
   end
 
-  # def test_it_can_find_a_capital_for_a_state
-  #   assert_equal "Salem", sc.find_capital("Oregon")
-  # end
+  def test_it_can_find_a_capital_for_a_state
+    assert_equal "Salem", sc.find_capital("Oregon")
+  end
 end
