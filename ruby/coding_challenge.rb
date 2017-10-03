@@ -34,4 +34,8 @@ class StateCapitals
   def capital_to_abbreviation(city)
     capitals.key(city)
   end
+
+  def capital_to_state(city)
+    states.key(capital_to_abbreviation(city))
+  end
 end
