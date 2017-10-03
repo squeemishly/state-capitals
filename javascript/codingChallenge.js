@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 class StateCapitals {
   constructor() {
     this.states = {"Oregon": "OR",
@@ -21,6 +23,10 @@ class StateCapitals {
     } else {
       return "Unknown"
     }
+  }
+
+  capital_to_abbreviation(city) {
+    return _.findKey(this.capitals, _.partial(_.isEqual,city))
   }
 }
 
