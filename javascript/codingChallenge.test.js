@@ -21,4 +21,8 @@ describe('StateCapitals()', () => {
   it('returns Unknown if the capital cannot be found', () => {
     assert.equal('Unknown', sc.state_to_capital("Boudi"))
   })
+
+  it('returns an abbreviated state when given the capital', () => {
+    assert.equal('OR', sc.capital_to_abbreviation('Salem'))
+  })
 })
