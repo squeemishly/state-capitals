@@ -33,4 +33,8 @@ class StateCapitalsTest < Minitest::Test
   def test_it_can_find_a_state_given_the_capital
     assert_equal "CO", sc.capital_to_abbreviation("Denver")
   end
+
+  def test_it_can_return_the_full_state_name_from_the_capital
+    assert_equal "Colorado", sc.capital_to_state("Denver")
+  end
 end
