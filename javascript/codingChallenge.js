@@ -14,6 +14,10 @@ class StateCapitals {
   state_to_abbreviation(state) {
     return this.states[state]
   }
+
+  state_to_capital(state) {
+    return this.capitals[this.state_to_abbreviation(state)]
+  }
 }
 
 module.exports = StateCapitals;
