@@ -28,4 +28,8 @@ class StateCapitalsTest < Minitest::Test
     assert_equal "OR", sc.find_abbreviation("Oregon")
   end
 
+  def test_it_finds_the_capital_from_a_state_abbreviation
+    assert_equal "Salem", sc.find_capital("OR")
+  end
+
 end
