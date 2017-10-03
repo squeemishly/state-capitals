@@ -16,7 +16,11 @@ class StateCapitals {
   }
 
   state_to_capital(state) {
-    return this.capitals[this.state_to_abbreviation(state)]
+    if (this.capitals[this.state_to_abbreviation(state)]) {
+      return this.capitals[this.state_to_abbreviation(state)]
+    } else {
+      return "Unknown"
+    }
   }
 }
 
