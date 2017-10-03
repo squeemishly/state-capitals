@@ -28,6 +28,10 @@ class StateCapitals {
   capital_to_abbreviation(city) {
     return _.findKey(this.capitals, _.partial(_.isEqual,city))
   }
+
+  capital_to_state_name(city) {
+    return _.findKey(this.states, _.partial(_.isEqual, this.capital_to_abbreviation(city)))
+  }
 }
 
 module.exports = StateCapitals;
