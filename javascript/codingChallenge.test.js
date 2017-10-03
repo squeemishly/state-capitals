@@ -13,4 +13,8 @@ describe('StateCapitals()', () => {
   it('can find the state abbreviation from a state name', () => {
     assert.equal("OR", sc.state_to_abbreviation("Oregon"))
   })
+
+  it('can return the capital from a state name', () => {
+    assert.equal('Salem', sc.state_to_capital('Oregon'))
+  })
 })
