@@ -3,14 +3,14 @@ require 'pry'
 require 'minitest/autorun'
 require_relative './coding_challenge'
 
-class ObjectTest < Minitest::Test
-  attr_reader :template
+class StateCapitalsTest < Minitest::Test
+  attr_reader :sc
 
   def setup
-    @template = TemplateClass.new
+    @sc = StateCapitals.new
   end
 
   def test_it_exists
-    assert_instance_of TemplateClass, template
+    assert_instance_of StateCapitals, sc
   end
 end
