@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 )
@@ -25,22 +26,24 @@ var states = []State{
 }
 
 func main() {
-	if len(os.Args) == 1 {
-		fmt.Println("gimme an state!")
-		os.Exit(1)
+	statePtr := flag.String("state", "unk", "a state name")
+	flag.Parse()
+
+	if *statePtr != "" {
+		fmt.Printf("state: %v", *statePtr)
+		fmt.Println()
+
+		state := findState(*statePtr)
+
+		if state.abbreviation == "" {
+			fmt.Println("We don't know that state. Try again.")
+			os.Exit(1)
+		}
+
+		fmt.Printf("The abbreviation for %s is %s", *statePtr, state.abbreviation)
+		fmt.Println()
+		fmt.Printf("The capital for %s is %s", *statePtr, state.capital)
 	}
-
-	state := os.Args[1]
-	myState := findState(state)
-
-	if myState.abbreviation == "" {
-		fmt.Println("We don't know that state. Try again.")
-		os.Exit(1)
-	}
-
-	fmt.Printf("The abbreviation for %s is %s", state, myState.abbreviation)
-	fmt.Println()
-	fmt.Printf("The capital for %s is %s", state, myState.capital)
 }
 
 func findState(state string) State {
