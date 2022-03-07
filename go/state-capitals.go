@@ -26,7 +26,8 @@ var states = []State{
 }
 
 func main() {
-	statePtr := flag.String("state", "unk", "a state name")
+	statePtr := flag.String("state", "", "a state name")
+	capitalPtr := flag.String("capital", "", "a state capital")
 	flag.Parse()
 
 	if *statePtr != "" {
@@ -44,12 +45,38 @@ func main() {
 		fmt.Println()
 		fmt.Printf("The capital for %s is %s", *statePtr, state.capital)
 	}
+
+	if *capitalPtr != "" {
+		fmt.Printf("capital: %v", *capitalPtr)
+		fmt.Println()
+
+		state := findStateFromCapital(*capitalPtr)
+
+		if state.abbreviation == "" {
+			fmt.Println("We don't know that state. Try again.")
+			os.Exit(1)
+		}
+
+		fmt.Printf("The state where %s is the capital is %s", *capitalPtr, state.name)
+	}
 }
 
 func findState(state string) State {
 	var myState State
 	for _, s := range states {
 		if s.name == state {
+			myState = s
+			break
+		}
+	}
+
+	return myState
+}
+
+func findStateFromCapital(capital string) State {
+	var myState State
+	for _, s := range states {
+		if s.capital == capital {
 			myState = s
 			break
 		}
