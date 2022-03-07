@@ -12,12 +12,12 @@ type State struct {
 }
 
 var states = []State{
-	State{
+	{
 		name:         "Oregon",
 		abbreviation: "OR",
 		capital:      "Portland",
 	},
-	State{
+	{
 		name:         "Colorado",
 		abbreviation: "CO",
 		capital:      "Denver",
@@ -31,46 +31,26 @@ func main() {
 	}
 
 	state := os.Args[1]
+	myState := findState(state)
 
-	abbrev := stateToAbbrev(state)
-	if abbrev == "" {
+	if myState.abbreviation == "" {
 		fmt.Println("We don't know that state. Try again.")
 		os.Exit(1)
-	} else {
-		fmt.Printf("The abbreviation for %s is %s", state, abbrev)
 	}
 
+	fmt.Printf("The abbreviation for %s is %s", state, myState.abbreviation)
 	fmt.Println()
-
-	capital := stateCapital(state)
-	if capital == "" {
-		fmt.Println("We don't know that state. Try again.")
-		os.Exit(1)
-	} else {
-		fmt.Printf("The capital for %s is %s", state, capital)
-	}
+	fmt.Printf("The capital for %s is %s", state, myState.capital)
 }
 
-func stateToAbbrev(state string) string {
-	var abbrev string
+func findState(state string) State {
+	var myState State
 	for _, s := range states {
 		if s.name == state {
-			abbrev = s.abbreviation
+			myState = s
 			break
 		}
 	}
 
-	return abbrev
-}
-
-func stateCapital(state string) string {
-	var capital string
-	for _, s := range states {
-		if s.name == state {
-			capital = s.capital
-			break
-		}
-	}
-
-	return capital
+	return myState
 }
