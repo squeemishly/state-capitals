@@ -16,12 +16,17 @@ var states = []State{
 	{
 		name:         "Oregon",
 		abbreviation: "OR",
-		capital:      "Portland",
+		capital:      "Salem",
 	},
 	{
 		name:         "Colorado",
 		abbreviation: "CO",
 		capital:      "Denver",
+	},
+	{
+		name:         "New Mexico",
+		abbreviation: "NM",
+		capital:      "Santa Fe",
 	},
 }
 
