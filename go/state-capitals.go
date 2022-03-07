@@ -4,27 +4,24 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 )
 
 type State struct {
-	name         string
 	abbreviation string
 	capital      string
 }
 
-var states = []State{
-	{
-		name:         "Oregon",
+var states = map[string]State{
+	"oregon": {
 		abbreviation: "OR",
 		capital:      "Salem",
 	},
-	{
-		name:         "Colorado",
+	"colorado": {
 		abbreviation: "CO",
 		capital:      "Denver",
 	},
-	{
-		name:         "New Mexico",
+	"new mexico": {
 		abbreviation: "NM",
 		capital:      "Santa Fe",
 	},
@@ -39,53 +36,42 @@ func main() {
 		fmt.Printf("state: %v", *statePtr)
 		fmt.Println()
 
-		state := findState(*statePtr)
+		state, ok := states[strings.ToLower(*statePtr)]
 
-		if state.abbreviation == "" {
+		if ok {
+			correctedState := strings.Title(*statePtr)
+
+			fmt.Printf("The abbreviation for %s is %s", correctedState, state.abbreviation)
+			fmt.Println()
+			fmt.Printf("The capital for %s is %s", correctedState, state.capital)
+		} else {
 			fmt.Println("We don't know that state. Try again.")
 			os.Exit(1)
 		}
-
-		fmt.Printf("The abbreviation for %s is %s", *statePtr, state.abbreviation)
-		fmt.Println()
-		fmt.Printf("The capital for %s is %s", *statePtr, state.capital)
 	}
 
 	if *capitalPtr != "" {
 		fmt.Printf("capital: %v", *capitalPtr)
 		fmt.Println()
 
-		state := findStateFromCapital(*capitalPtr)
+		capitals := makeCapitals()
+		state, ok := capitals[strings.ToLower(*capitalPtr)]
 
-		if state.abbreviation == "" {
-			fmt.Println("We don't know that state. Try again.")
+		if ok {
+			correctedState := strings.Title(state)
+			correctedCapital := strings.Title(*capitalPtr)
+			fmt.Printf("The state where %s is the capital is %s", correctedCapital, correctedState)
+		} else {
+			fmt.Println("We don't know that capital. Try again.")
 			os.Exit(1)
 		}
-
-		fmt.Printf("The state where %s is the capital is %s", *capitalPtr, state.name)
 	}
 }
 
-func findState(state string) State {
-	var myState State
-	for _, s := range states {
-		if s.name == state {
-			myState = s
-			break
-		}
+func makeCapitals() map[string]string {
+	myCapitals := make(map[string]string)
+	for i, s := range states {
+		myCapitals[strings.ToLower(s.capital)] = i
 	}
-
-	return myState
-}
-
-func findStateFromCapital(capital string) State {
-	var myState State
-	for _, s := range states {
-		if s.capital == capital {
-			myState = s
-			break
-		}
-	}
-
-	return myState
+	return myCapitals
 }
